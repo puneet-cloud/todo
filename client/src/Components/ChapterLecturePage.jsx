@@ -2,42 +2,7 @@ import React, { useState, useEffect } from 'react';
 // Assuming allSubjectsData is used elsewhere or will be.
 // import allSubjectsData from './allSubjectsData'; 
 // Assuming lectureProgressAPI.js is correctly implemented.
-// import { getLectureProgress, markLectureComplete } from '../api/lectureProgressAPI.js';
-
-// Mock API functions for demonstration. In a real app, these would be in lectureProgressAPI.js.
-// For demonstration purposes, using an in-memory mock.
-const mockLectureProgress = {}; // Stores lecture completion status
-
-const getLectureProgress = async ({ subjectId }) => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 300));
-  console.log(`Mock API: Fetching progress for subjectId: ${subjectId}`);
-  // Return mock data. Structure it as the original API expects for conversion.
-  const progressForSubject = mockLectureProgress[subjectId] || {};
-  const status = Object.keys(progressForSubject).map(chapterId => ({
-    id: chapterId,
-    lectures: Object.keys(progressForSubject[chapterId]).map(lectureId => ({
-      id: lectureId,
-      completed: progressForSubject[chapterId][lectureId],
-    })),
-  }));
-  return { status };
-};
-
-const markLectureComplete = async ({ subjectId, chapterId, lectureId, completed }) => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 300));
-  console.log(`Mock API: Marking subject ${subjectId}, chapter ${chapterId}, lecture ${lectureId} as ${completed}`);
-  if (!mockLectureProgress[subjectId]) {
-    mockLectureProgress[subjectId] = {};
-  }
-  if (!mockLectureProgress[subjectId][chapterId]) {
-    mockLectureProgress[subjectId][chapterId] = {};
-  }
-  mockLectureProgress[subjectId][chapterId][lectureId] = completed;
-  return { success: true };
-};
-
+import { getLectureProgress, markLectureComplete } from '../api/lectureProgressAPI.js';
 
 // --- ChapterLecturePage Component ---
 // This component displays chapters and lectures for a specific subject.
@@ -53,6 +18,8 @@ const ChapterLecturePage = ({ subjectData, onBack }) => {
       setSelectedChapter(null);
     }
 
+    console.log("subjectData: ", subjectData, selectedChapter);
+
     // Function to fetch lecture progress from the API
     const fetchLectureProgress = async () => {
       try {
@@ -60,7 +27,7 @@ const ChapterLecturePage = ({ subjectData, onBack }) => {
         if (!subjectId) return; // Ensure subjectData and id exist
 
         const response = await getLectureProgress({ subjectId });
-
+        console.log('Fetched lecture progress:', response); 
         // Convert the API response structure into a more usable map
         const progressMap = {};
         response?.status?.forEach((chapter) => {

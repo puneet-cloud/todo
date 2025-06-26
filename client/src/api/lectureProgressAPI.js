@@ -1,7 +1,7 @@
 // api/lectureProgressAPI.js
 import axiosInstance from "../utils/axios.helper";
 
-export const getLectureProgress = async ({subjectId, selectedChapterId}) => {
+export const getLectureProgress = async ({subjectId}) => {
   const res = await axiosInstance.post('/progress', {subjectId});
 
   console.log('Lecture progress data fetched:', res.data);
