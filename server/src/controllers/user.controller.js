@@ -129,7 +129,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const cookieOptions = {
     httpOnly: true, // Prevents access via JavaScript
     secure: process.env.NODE_ENV === "production", // Secure only in production
-    sameSite: "Strict", // Required for cross-origin cookies (Vercel → Render)
+    sameSite: "None", // Required for cross-origin cookies (Vercel → Render)
   };
 
   console.log("User logged in successfully");
