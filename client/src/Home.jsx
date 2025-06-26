@@ -28,7 +28,7 @@ const Home = () => {
   // Fetch current user
   
   return (
-    <div className="min-h-screen bg-gray-100 font-sans antialiased flex flex-col items-center p-2 sm:p-4">
+    <div className="min-h-screen bg-slate-900 font-sans antialiased flex flex-col items-center p-2 sm:p-4">
       {/* Header Section */}
       
 

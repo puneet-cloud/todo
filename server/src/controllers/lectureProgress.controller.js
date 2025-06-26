@@ -4,15 +4,17 @@ import LectureProgress from '../models/LectureProgress.model.js';
 export const updateLectureProgress = async (req, res) => {
   try {
     const { subjectId, chapterId, lectureId, completed, subjectName, chapterName, lectureTitle, duration, date } = req.body;
+    const userId = req.user.id; 
 
     if (!subjectId || !chapterId || !lectureId) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
     // Step 1: Find or Create Subject
-    let subjectDoc = await LectureProgress.findOne({ id: subjectId });
+    let subjectDoc = await LectureProgress.findOne({ id: subjectId, user: userId });
     if (!subjectDoc) {
       subjectDoc = new LectureProgress({
+        user: userId,
         id: subjectId,
         name: subjectName || subjectId,
         chapters: [],
@@ -59,8 +61,11 @@ export const getLectureCompletionStatus = async (req, res) => {
   try {
     console.log(req.body)
     const { subjectId} = req.body;
+    const userId = req.user.id;
 
-    const subject = await LectureProgress.findOne({ id: subjectId });
+    const subject = await LectureProgress.findOne({ id: subjectId, user: userId });
+    console.log("subject hggjjhg", subject)
+    
     if (!subject) {
       return res.status(200).json({ completed: false });
     }
