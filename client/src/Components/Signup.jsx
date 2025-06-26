@@ -94,7 +94,7 @@ function SignUp() {
                         required
                         placeholder="Enter your full name"
                         // Tailwind classes for dark theme styling
-                        className="bg-slate-700 text-white border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                        className="bg-slate-700 text-black border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                         labelClassName="text-gray-300"
                         {...register("fullName", { required: true })}
                     />
@@ -108,7 +108,7 @@ function SignUp() {
                         required
                         placeholder="Choose your username"
                         // Tailwind classes for dark theme styling
-                        className="bg-slate-700 text-white border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                        className="bg-slate-700 text-black border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                         labelClassName="text-gray-300"
                         {...register("userName", { required: true })}
                     />
@@ -123,7 +123,7 @@ function SignUp() {
                         placeholder="Enter your email address"
                         required
                         // Tailwind classes for dark theme styling
-                        className="bg-slate-700 text-white border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                        className="bg-slate-700 text-black border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                         labelClassName="text-gray-300"
                         {...register("email", {
                             required: "Email is required",
@@ -144,7 +144,7 @@ function SignUp() {
                         placeholder="Create your password"
                         required
                         // Tailwind classes for dark theme styling
-                        className="bg-slate-700 text-white border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                        className="bg-slate-700 text-black border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                         labelClassName="text-gray-300"
                         {...register("password", {
                             required: "Password is required",

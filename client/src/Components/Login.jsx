@@ -110,7 +110,7 @@ function Login() {
                         type="text" // Allows input for both email and username
                         placeholder="Enter your email or username"
                         // Tailwind classes for dark theme styling of the input field
-                        className="bg-slate-700 text-white border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                        className="bg-slate-700 text-black border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                         labelClassName="text-gray-300" // Tailwind class for the label
                         {...register("userName", {
                             required: "Email or username is required",
@@ -126,7 +126,7 @@ function Login() {
                         type="password"
                         placeholder="Enter your password"
                         // Tailwind classes for dark theme styling of the input field
-                        className="bg-slate-700 text-white border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                        className="bg-slate-700 text-black border-slate-600 placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
                         labelClassName="text-gray-300" // Tailwind class for the label
                         {...register("password", {
                             required: "Password is required",
