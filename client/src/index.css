@@ -1,1 +1,150 @@
 @import "tailwindcss";
+/* Existing animations from previous responses */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.bg-radial-gradient-glow {
+  background: radial-gradient(circle at center, #3b82f640 0%, transparent 50%);
+  background-size: 150% 150%;
+}
+
+/* REMOVED: .hover\:shadow-glow:hover from here as it's no longer used for card glow */
+
+/* Staggered Fade-In-Up animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0; /* Ensures it's hidden before the animation starts */
+}
+
+/* NEW: Keyframes for the Subtle Pulse on cards */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Tailwind shadow-md */
+  }
+  50% {
+    transform: scale(1.01); /* Slightly scales up */
+    box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.15), 0 6px 8px -3px rgba(0, 0, 0, 0.1); /* Slightly larger shadow */
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite; /* Apply the subtle pulse animation */
+}
+
+
+/* Optional: Keyframes for quote text animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUpQuote {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUpQuote 0.8s ease-out 0.2s forwards; /* Slight delay for the second line */
+  opacity: 0;
+}
+
+/* Keyframes for the boy sliding in from the left */
+@keyframes slide-in-left-boy {
+  0% {
+    transform: translateX(-100vw); /* Starts far off-screen to the left */
+  }
+  50% {
+    transform: translateX(0); /* Moves to its original position (relative to parent) */
+  }
+  100% {
+    transform: translateX(-25%); /* Moves slightly left to meet the girl for the "hug" */
+  }
+}
+
+/* Keyframes for the girl sliding in from the right */
+@keyframes slide-in-right-girl {
+  0% {
+    transform: translateX(100vw); /* Starts far off-screen to the right */
+  }
+  50% {
+    transform: translateX(0); /* Moves to its original position (relative to parent) */
+  }
+  100% {
+    transform: translateX(25%); /* Moves slightly right to meet the boy for the "hug" */
+  }
+}
+
+/* Keyframes for the heart icon fading in */
+@keyframes fade-in-heart {
+  0%, 50% {
+    opacity: 0; /* Hidden for the first half of the animation */
+    transform: scale(0.5); /* Starts small */
+  }
+  75% {
+    opacity: 1; /* Fades in */
+    transform: scale(1.2); /* Slightly pops out */
+  }
+  100% {
+    opacity: 1; /* Remains visible */
+    transform: scale(1); /* Settles at normal size */
+  }
+}
+
+/* Apply the animations to the respective elements */
+.animate-slide-in-left-boy {
+  animation: slide-in-left-boy 1.5s ease-out forwards; /* 1.5s duration, ease-out timing, stays at end state */
+}
+
+.animate-slide-in-right-girl {
+  animation: slide-in-right-girl 1.5s ease-out forwards; /* Same as boy, for simultaneous movement */
+}
+
+.animate-fade-in-heart {
+  /* This animation starts after a delay (1.5s) to sync with the moment the figures meet */
+  animation: fade-in-heart 1s ease-in-out 1.5s forwards; /* 1s duration, ease-in-out, starts after delay */
+}
+
+/* Standard Tailwind pulse animation for text */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

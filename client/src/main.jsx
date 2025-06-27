@@ -9,6 +9,7 @@ import Login from './Components/Login.jsx';
 import Signup from './Components/Signup.jsx';
 import ProtectedRoute from './Components/ProtectedRoute.jsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import SubjectProgressPage from './Components/ProgressPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
       },
+      {
+        path: '/progress',
+        element: <SubjectProgressPage/>
+      }
     ],
   },
   {

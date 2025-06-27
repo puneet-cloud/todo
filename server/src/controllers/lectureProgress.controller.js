@@ -79,3 +79,30 @@ export const getLectureCompletionStatus = async (req, res) => {
     return res.status(500).json({ message: 'Server error' });
   }
 };
+
+export const getLectureProgress = async (req, res) => {
+  try {
+    // In a real application, you'd get the userId from authenticated session (e.g., req.user.id)
+    // For demonstration, we'll assume it comes from a URL parameter.
+    const userId = req.user.id; // Example: /api/progress/:userId
+
+    if (!userId) {
+      return res.status(400).json({ message: 'User ID is required.' });
+    }
+
+    const userProgress = await LectureProgress.find({ user: userId });
+
+    if (!userProgress) {
+      return res.status(200).json({ chapters: [] });
+    }
+
+    console.log('User Progress:', userProgress);
+
+    // Send back the 'chapters' array as per your model structure
+    res.status(200).json(userProgress); // Sending the whole document to match frontend's userLectureProgressData
+
+  } catch (error) {
+    console.error('Error fetching lecture progress:', error);
+    res.status(500).json({ message: 'Server error while fetching lecture progress.' });
+  }
+};
